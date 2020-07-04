@@ -1,0 +1,24 @@
+{
+    "name": "catch-the-lion",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "dev": "parcel index.html",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/oinochoe/catch_the_lion.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/oinochoe/catch_the_lion/issues"
+    },
+    "homepage": "https://github.com/oinochoe/catch_the_lion#readme",
+    "devDependencies": {
+        "parcel-bundler": "^1.12.4"
+    }
+}
