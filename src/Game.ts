@@ -1,3 +1,5 @@
+import { Board } from './Board';
+
 export class Game {
-    constructor() {}
+    readonly board = new Board();
 }
