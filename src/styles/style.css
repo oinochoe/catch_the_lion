@@ -1,0 +1,45 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css?family=Nanum+Brush+Script|Nanum+Pen+Script|Pacifico|Sacramento&subset=korean');
+body {
+  font-family: 'Nanum Pen Script', cursive !important;
+  background: #606c88;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #3f4c6b, #606c88);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #3f4c6b, #606c88); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+section.main {
+  padding: 30px 0px;
+  text-align: center;
+  color: #bebfc3;
+}
+.number-selector {
+  text-align: center;
+  margin: 43px;
+}
+.number-circle {
+  display: inline-block;
+  font-family: Arial, Helvetica, sans-serif;
+  width: 120px;
+  line-height: 113px;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 65px;
+  color: #FEFFFF;
+  border: 2px solid #25232F;
+  background-color: #25232F;
+}
+a.plus, a.minus {
+  line-height: 113px;
+  color: #28AAAF;
+}
+a.plus:hover, a.minus:hover {
+  color: #1f888c
+}
+input[type=number]::-webkit-inner-spin-button {
+  display: none;
+}
+.number-circle input:focus {
+  border: none;
+  text-align: center;
+  outline-color: unset;
+}
