@@ -48,6 +48,7 @@ export class Board {
         for (let row = 0; row < 4; row++) {
             const rowEl = document.createElement('div');
             rowEl.className = 'row';
+            this._el.appendChild(rowEl);
 
             for (let col = 0; col < 3; col++) {
                 const cell = new Cell({ row, col }, null);

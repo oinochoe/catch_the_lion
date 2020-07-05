@@ -7,7 +7,7 @@ export class Game {
 
     constructor() {
         const boardContainer = document.querySelector('.board-container');
-        boardContainer.firstChild.remove();
+        // boardContainer.firstChild.remove();
         boardContainer.appendChild(this.board._el);
     }
 }
