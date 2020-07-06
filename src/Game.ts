@@ -1,5 +1,5 @@
-import { Board, DeadZone, Cell } from './Board';
 import { Player, PlayerType } from './Player';
+import { Cell, Board, DeadZone } from './Board';
 
 export class Game {
     private selectedCell: Cell;
@@ -23,6 +23,37 @@ export class Game {
         this.currentPlayer = this.upperPlayer;
         this.board.render();
         this.renderInfo();
+
+        this.board._el.addEventListener('click', (e) => {
+            if (this.state === 'END') {
+                return false;
+            }
+
+            if (e.target instanceof HTMLElement) {
+                let cellEl: HTMLElement;
+                if (e.target.classList.contains('cell')) {
+                    cellEl = e.target;
+                } else if (e.target.classList.contains('piece')) {
+                    cellEl = e.target.parentElement;
+                } else {
+                    return false;
+                }
+                const cell = this.board.map.get(cellEl);
+
+                if (this.isCurrentUserPiece(cell)) {
+                    this.select(cell);
+                }
+            }
+        });
+    }
+
+    isCurrentUserPiece(cell: Cell) {
+        return cell !== null && cell.getPiece() !== null && cell.getPiece().ownperType === this.currentPlayer.type;
+    }
+
+    select(cell: Cell) {
+        if (this.selectedCell) {
+        }
     }
 
     // ?를 하면 파라미터를 전달할수도 있고 아닐수도 있다 라는 뜻.
