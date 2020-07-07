@@ -48,7 +48,7 @@ export class Game {
     }
 
     isCurrentUserPiece(cell: Cell) {
-        return cell !== null && cell.getPiece() !== null && cell.getPiece().ownperType === this.currentPlayer.type;
+        return cell !== null && cell.getPiece() !== null && cell.getPiece().ownerType === this.currentPlayer.type;
     }
 
     select(cell: Cell) {
