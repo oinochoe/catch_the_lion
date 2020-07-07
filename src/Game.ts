@@ -42,6 +42,7 @@ export class Game {
 
                 if (this.isCurrentUserPiece(cell)) {
                     this.select(cell);
+                    return false;
                 }
             }
         });
@@ -52,8 +53,22 @@ export class Game {
     }
 
     select(cell: Cell) {
-        if (this.selectedCell) {
+        if (cell.getPiece() == null) {
+            return;
         }
+
+        if (cell.getPiece().ownerType !== this.currentPlayer.type) {
+            return;
+        }
+
+        if (this.selectedCell) {
+            this.selectedCell.deactive();
+            this.selectedCell.render();
+        }
+
+        this.selectedCell = cell;
+        cell.active();
+        cell.render();
     }
 
     // ?를 하면 파라미터를 전달할수도 있고 아닐수도 있다 라는 뜻.
