@@ -44,12 +44,17 @@ export class Game {
                     this.select(cell);
                     return false;
                 }
+
+                if (this.selectedCell) {
+                    this.move(cell);
+                    this.changeTurn();
+                }
             }
         });
     }
 
     isCurrentUserPiece(cell: Cell) {
-        return cell !== null && cell.getPiece() !== null && cell.getPiece().ownerType === this.currentPlayer.type;
+        return cell != null && cell.getPiece() != null && cell.getPiece().ownerType === this.currentPlayer.type;
     }
 
     select(cell: Cell) {
@@ -69,6 +74,24 @@ export class Game {
         this.selectedCell = cell;
         cell.active();
         cell.render();
+    }
+
+    move(cell: Cell) {
+        this.selectedCell.deactive();
+        const killed = this.selectedCell.getPiece().move(this.selectedCell, cell);
+        this.selectedCell = cell;
+
+        if (killed) {
+            if (killed.ownerType == PlayerType.UPPER) {
+                this.lowerDeadZone.put(killed);
+            } else {
+                this.upperDeadZone.put(killed);
+            }
+
+            if (killed instanceof Lion) {
+                this.state = 'END';
+            }
+        }
     }
 
     // ?를 하면 파라미터를 전달할수도 있고 아닐수도 있다 라는 뜻.
