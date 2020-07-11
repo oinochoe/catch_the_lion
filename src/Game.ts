@@ -1,5 +1,6 @@
 import { Player, PlayerType } from './Player';
 import { Cell, Board, DeadZone } from './Board';
+import { Lion } from './Piece';
 
 export class Game {
     private selectedCell: Cell;
@@ -78,7 +79,7 @@ export class Game {
 
     move(cell: Cell) {
         this.selectedCell.deactive();
-        const killed = this.selectedCell.getPiece().move(this.selectedCell, cell);
+        const killed = this.selectedCell.getPiece().move(this.selectedCell, cell).getKilled();
         this.selectedCell = cell;
 
         if (killed) {
@@ -96,7 +97,7 @@ export class Game {
 
     // ?를 하면 파라미터를 전달할수도 있고 아닐수도 있다 라는 뜻.
     renderInfo(extraMessage?: string) {
-        this.gameInfoEl.innerHTML = `#${this.turn}턴 ${this.currentPlayer.type} 차례`;
+        this.gameInfoEl.innerHTML = `#${this.turn}턴 ${this.currentPlayer.type} 차례 ${extraMessage ? '| ' + extraMessage : ''}`;
     }
 
     changeTurn() {
